@@ -5,72 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>E Major — 4 Sharps</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cream: #f5f0e8;
-    --ink: #1a1208;
-    --gold: #c9922a;
-    --gold-light: #e8b84b;
-    --rust: #b54a2c;
-    --sage: #4a7c59;
-    --paper: #ede8dc;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--ink);
-    min-height: 100vh;
-    font-family: 'Space Mono', monospace;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px 60px;
-    background-image:
-      radial-gradient(ellipse at 20% 0%, rgba(201,146,42,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 100%, rgba(74,124,89,0.1) 0%, transparent 60%);
-  }
-  header { text-align: center; margin-bottom: 32px; }
-  header .eyebrow { font-size: 11px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
-  header h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 8vw, 80px); font-weight: 900; color: var(--cream); line-height: 1; letter-spacing: -0.02em; }
-  header h1 span { color: var(--gold); }
-  header .subtitle { margin-top: 12px; font-size: 12px; color: rgba(245,240,232,0.45); letter-spacing: 0.2em; }
-
-  .key-sig-row { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; }
-  .sharp-badge { width: 36px; height: 36px; border-radius: 8px; background: var(--gold); color: var(--ink); font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 12px rgba(201,146,42,0.4); }
-  .sharp-label { font-size: 11px; color: rgba(245,240,232,0.5); letter-spacing: 0.15em; margin-left: 6px; }
-
-  .scale-strip { display: flex; gap: 6px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; }
-  .note-chip { padding: 7px 15px; border-radius: 100px; font-size: 13px; font-weight: 700; font-family: 'Space Mono', monospace; letter-spacing: 0.05em; }
-  .note-chip.natural { background: var(--cream); color: var(--ink); }
-  .note-chip.sharp { background: transparent; color: var(--gold-light); border: 2px solid var(--gold); }
-
-  .section-header { display: flex; align-items: center; gap: 16px; width: 100%; max-width: 900px; margin-bottom: 14px; }
-  .section-header h2 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--cream); white-space: nowrap; }
-  .section-header .line { flex: 1; height: 1px; background: rgba(245,240,232,0.15); }
-  .hand-badge { font-size: 10px; letter-spacing: 0.2em; padding: 4px 12px; border-radius: 100px; text-transform: uppercase; }
-  .hand-badge.right { background: rgba(201,146,42,0.2); color: var(--gold-light); }
-  .hand-badge.left  { background: rgba(74,124,89,0.2); color: #7fc99a; }
-
-  .staff-wrap { width: 100%; max-width: 900px; margin-bottom: 40px; }
-  .staff-card { background: var(--paper); border-radius: 16px; padding: 28px 32px 22px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
-  .staff-card h3 { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--ink); margin-bottom: 16px; opacity: 0.55; letter-spacing: 0.06em; }
-  svg.staff { overflow: visible; display: block; width: 100%; }
-
-  .table-wrap { width: 100%; max-width: 900px; }
-  .note-table { width: 100%; border-collapse: collapse; }
-  .note-table th { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.4); padding: 10px 14px; text-align: left; border-bottom: 1px solid rgba(245,240,232,0.1); }
-  .note-table td { padding: 13px 14px; font-size: 13px; color: var(--cream); border-bottom: 1px solid rgba(245,240,232,0.07); vertical-align: middle; }
-  .note-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--gold-light); }
-  .scale-degree { font-size: 11px; color: rgba(245,240,232,0.4); }
-  .finger-pill { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-size: 12px; font-weight: 700; margin: 0 2px; }
-  .finger-pill.rh { background: rgba(201,146,42,0.25); color: var(--gold-light); border: 1px solid var(--gold); }
-  .finger-pill.lh { background: rgba(74,124,89,0.25); color: #7fc99a; border: 1px solid #4a7c59; }
-
-  .tips { width: 100%; max-width: 900px; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-  .tip-card { background: rgba(245,240,232,0.04); border: 1px solid rgba(245,240,232,0.1); border-radius: 14px; padding: 18px; }
-  .tip-card .tip-icon { font-size: 20px; margin-bottom: 8px; }
-  .tip-card h4 { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--cream); margin-bottom: 5px; }
-  .tip-card p { font-size: 11px; color: rgba(245,240,232,0.5); line-height: 1.7; }
-</style>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/reference.css">
 </head>
 <body>
 
@@ -286,7 +222,7 @@
 
        E3  y=85   (space between D3=90 and F3=80)
        F#3 y=80   (on F3 line)
-       G#3 y=75   (space between F3=80 and A3=70)
+       G#3 y=75   (space between F3=80 and A3(70)
        A3  y=70   (top line)
        B3  y=65   (space above top)
        C#4 y=60   (1st ledger above) ← ledger needed

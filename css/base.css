@@ -1,0 +1,30 @@
+:root {
+  --cream: #f5f0e8;
+  --ink: #1a1208;
+  --gold: #c9922a;
+  --gold-light: #e8b84b;
+  --rust: #b54a2c;
+  --sage: #4a7c59;
+  --paper: #ede8dc;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--ink);
+  min-height: 100vh;
+  font-family: 'Space Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--cream);
+}
+
+header { text-align: center; }
+header .eyebrow { color: var(--gold); text-transform: uppercase; }
+header h1 { font-family: 'Playfair Display', serif; font-weight: 900; color: var(--cream); line-height: 1.1; letter-spacing: -0.01em; }
+header h1 span { color: var(--gold); }
+
+.section-header { display: flex; align-items: center; gap: 16px; width: 100%; }
+.section-header h2 { font-family: 'Playfair Display', serif; color: var(--cream); white-space: nowrap; }
+.section-header .line { flex: 1; height: 1px; background: rgba(245,240,232,0.15); }
