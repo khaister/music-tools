@@ -23,22 +23,33 @@ async function loadKey() {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
     
-    // Calculate base path to the project root
+    // Determine the base path to the project root
     let base = ".";
     const pathname = window.location.pathname;
-    if (pathname.includes("/templates/")) {
-      base = "..";
-    } else if (pathname.includes("/keys/")) {
-      // Find where 'keys' is in the path and calculate depth from there
-      const parts = pathname.split("/").filter(Boolean);
-      const keysIndex = parts.indexOf("keys");
-      if (keysIndex !== -1) {
-        const depth = parts.length - 1 - keysIndex;
-        base = depth > 0 ? new Array(depth + 1).fill("..").join("/") : "..";
-      }
+    const parts = pathname.split("/").filter(Boolean);
+    const keysIndex = parts.indexOf("keys");
+    const templatesIndex = parts.indexOf("templates");
+
+    if (keysIndex !== -1) {
+      // Find distance from current location to root (where 'keys' is)
+      const depthFromKeys = parts.length - 1 - keysIndex;
+      base = new Array(depthFromKeys + 1).fill("..").join("/");
+    } else if (templatesIndex !== -1) {
+      // templates/ is at root
+      const depthFromTemplates = parts.length - 1 - templatesIndex;
+      base = new Array(depthFromTemplates + 1).fill("..").join("/");
     }
 
-    script.src = `${base}/keys/${slug}/key.js`.replace(/\/+/g, "/");
+    // Determine the final script URL
+    let scriptSrc;
+    if (pathname.includes(`/keys/${slug}/`)) {
+      // Best case: already in the correct folder
+      scriptSrc = "key.js";
+    } else {
+      scriptSrc = `${base}/keys/${slug}/key.js`.replace(/\/+/g, "/");
+    }
+
+    script.src = scriptSrc;
     script.async = true;
     script.onload = () => {
       if (window.KEY && window.KEY.slug === slug) {
