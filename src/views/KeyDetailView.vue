@@ -22,7 +22,7 @@ onUnmounted(() => {
 
 const fetchKeyData = async () => {
   try {
-    const response = await fetch(`/keys/${props.name}.json`)
+    const response = await fetch(`${import.meta.env.BASE_URL}keys/${props.name}.json`)
     keyData.value = await response.json()
     document.title = `${keyData.value.name} — KeyAtlas`
   } catch (e) {
