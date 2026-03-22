@@ -1,6 +1,6 @@
 // Shared rendering & data helpers for music reference pages
 
-// Read ?key= from URL, load corresponding /keys/{slug}/key.js which defines window.KEY
+// Read ?key= from URL, load corresponding /keys/{slug}/key.json
 async function loadKey() {
   const params = new URLSearchParams(window.location.search);
   const pathParts = window.location.pathname.split("/").filter(Boolean);
@@ -20,49 +20,44 @@ async function loadKey() {
     return window.KEY;
   }
 
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
+  // Determine the base path to the project root
+  let base = ".";
+  const pathname = window.location.pathname;
+  const parts = pathname.split("/").filter(Boolean);
+  const keysIndex = parts.indexOf("keys");
+  const templatesIndex = parts.indexOf("templates");
 
-    // Determine the base path to the project root
-    let base = ".";
-    const pathname = window.location.pathname;
-    const parts = pathname.split("/").filter(Boolean);
-    const keysIndex = parts.indexOf("keys");
-    const templatesIndex = parts.indexOf("templates");
+  if (keysIndex !== -1) {
+    // Find distance from current location to root (where 'keys' is)
+    const depthFromKeys = parts.length - 1 - keysIndex;
+    base = new Array(depthFromKeys + 1).fill("..").join("/");
+  } else if (templatesIndex !== -1) {
+    // templates/ is at root
+    const depthFromTemplates = parts.length - 1 - templatesIndex;
+    base = new Array(depthFromTemplates + 1).fill("..").join("/");
+  }
 
-    if (keysIndex !== -1) {
-      // Find distance from current location to root (where 'keys' is)
-      const depthFromKeys = parts.length - 1 - keysIndex;
-      base = new Array(depthFromKeys + 1).fill("..").join("/");
-    } else if (templatesIndex !== -1) {
-      // templates/ is at root
-      const depthFromTemplates = parts.length - 1 - templatesIndex;
-      base = new Array(depthFromTemplates + 1).fill("..").join("/");
+  // Determine the final JSON URL
+  let jsonUrl;
+  if (pathname.includes(`/keys/${slug}/`)) {
+    // Best case: already in the correct folder
+    jsonUrl = "key.json";
+  } else {
+    jsonUrl = `${base}/keys/${slug}/key.json`.replace(/\/+/g, "/");
+  }
+
+  try {
+    const response = await fetch(jsonUrl);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch key data: ${response.statusText}`);
     }
-
-    // Determine the final script URL
-    let scriptSrc;
-    if (pathname.includes(`/keys/${slug}/`)) {
-      // Best case: already in the correct folder
-      scriptSrc = "key.js";
-    } else {
-      scriptSrc = `${base}/keys/${slug}/key.js`.replace(/\/+/g, "/");
-    }
-
-    script.src = scriptSrc;
-    script.async = true;
-    script.onload = () => {
-      if (window.KEY && window.KEY.slug === slug) {
-        resolve(window.KEY);
-      } else {
-        reject(new Error("KEY data not found after loading key.js"));
-      }
-    };
-    script.onerror = () => reject(new Error(`Failed to load key data for ${slug}`));
-    document.head.appendChild(script);
-  });
+    const data = await response.json();
+    window.KEY = data;
+    return data;
+  } catch (error) {
+    throw new Error(`Failed to load key data for ${slug}: ${error.message}`);
+  }
 }
-
 // UI helpers – DOM utilities
 function $(selector) {
   return document.querySelector(selector);

@@ -1,0 +1,139 @@
+{
+  "name": "E Major",
+  "root": "E",
+  "type": "major",
+  "slug": "e-major",
+  "accidentals": {
+    "type": "sharp",
+    "count": 4,
+    "notes": ["F♯", "C♯", "G♯", "D♯"]
+  },
+  "scale": [
+    { "degree": 1, "note": "E", "accidental": null, "semitones": 0 },
+    { "degree": 2, "note": "F♯", "accidental": "sharp", "semitones": 2 },
+    { "degree": 3, "note": "G♯", "accidental": "sharp", "semitones": 4 },
+    { "degree": 4, "note": "A", "accidental": null, "semitones": 5 },
+    { "degree": 5, "note": "B", "accidental": null, "semitones": 7 },
+    { "degree": 6, "note": "C♯", "accidental": "sharp", "semitones": 9 },
+    { "degree": 7, "note": "D♯", "accidental": "sharp", "semitones": 11 }
+  ],
+  "fingering": {
+    "rightHand": [1, 2, 3, 1, 2, 3, 4, 5],
+    "leftHand": [5, 4, 3, 2, 1, 3, 2, 1]
+  },
+  "staffOctaves": {
+    "treble": { "start": "E4", "end": "E6" },
+    "bass": { "start": "E3", "end": "E5" }
+  },
+  "vexflow": {
+    "trebleNotesData": [
+      { "key": "e/4", "fingering": "1", "label": "E4" },
+      { "key": "f#/4", "fingering": "2", "label": "F#4" },
+      { "key": "g#/4", "fingering": "3", "label": "G#4" },
+      { "key": "a/4", "fingering": "1", "label": "A4" },
+      { "key": "b/4", "fingering": "2", "label": "B4" },
+      { "key": "c#/5", "fingering": "3", "label": "C#5" },
+      { "key": "d#/5", "fingering": "4", "label": "D#5" },
+      { "key": "e/5", "fingering": "1", "label": "E5" },
+      { "key": "f#/5", "fingering": "2", "label": "F#5" },
+      { "key": "g#/5", "fingering": "3", "label": "G#5" },
+      { "key": "a/5", "fingering": "1", "label": "A5" },
+      { "key": "b/5", "fingering": "2", "label": "B5" },
+      { "key": "c#/6", "fingering": "3", "label": "C#6" },
+      { "key": "d#/6", "fingering": "4", "label": "D#6" },
+      { "key": "e/6", "fingering": "5", "label": "E6" }
+    ],
+    "bassNotesData": [
+      { "key": "e/2", "fingering": "5", "label": "E2" },
+      { "key": "f#/2", "fingering": "4", "label": "F#2" },
+      { "key": "g#/2", "fingering": "3", "label": "G#2" },
+      { "key": "a/2", "fingering": "2", "label": "A2" },
+      { "key": "b/2", "fingering": "1", "label": "B2" },
+      { "key": "c#/3", "fingering": "3", "label": "C#3" },
+      { "key": "d#/3", "fingering": "2", "label": "D#3" },
+      { "key": "e/3", "fingering": "1", "label": "E3" },
+      { "key": "f#/3", "fingering": "5", "label": "F#3" },
+      { "key": "g#/3", "fingering": "4", "label": "G#3" },
+      { "key": "a/3", "fingering": "3", "label": "A3" },
+      { "key": "b/3", "fingering": "2", "label": "B3" },
+      { "key": "c#/4", "fingering": "1", "label": "C#4" },
+      { "key": "d#/4", "fingering": "3", "label": "D#4" },
+      { "key": "e/4", "fingering": "2", "label": "E4" }
+    ]
+  },
+  "intervals": [
+    { "degree": 1, "note": "E",  "name": "Unison",      "quality": "perfect", "semitones": 0,  "character": "Home, stable"        },
+    { "degree": 2, "note": "F♯", "name": "Major 2nd",   "quality": "major",   "semitones": 2,  "character": "Stepwise motion"      },
+    { "degree": 3, "note": "G♯", "name": "Major 3rd",   "quality": "major",   "semitones": 4,  "character": "Bright, defining"     },
+    { "degree": 4, "note": "A",  "name": "Perfect 4th", "quality": "perfect", "semitones": 5,  "character": "Open, neutral"        },
+    { "degree": 5, "note": "B",  "name": "Perfect 5th", "quality": "perfect", "semitones": 7,  "character": "Strong, grounded"     },
+    { "degree": 6, "note": "C♯", "name": "Major 6th",   "quality": "major",   "semitones": 9,  "character": "Warm, lyrical"        },
+    { "degree": 7, "note": "D♯", "name": "Major 7th",   "quality": "major",   "semitones": 11, "character": "Tense, pulls to E"    }
+  ],
+  "triads": [
+    { "numeral": "I",    "chord": "E",     "quality": "major",      "notes": ["E",  "G♯", "B"]  },
+    { "numeral": "ii",   "chord": "F♯m",   "quality": "minor",      "notes": ["F♯", "A",  "C♯"] },
+    { "numeral": "iii",  "chord": "G♯m",   "quality": "minor",      "notes": ["G♯", "B",  "D♯"] },
+    { "numeral": "IV",   "chord": "A",     "quality": "major",      "notes": ["A",  "C♯", "E"]  },
+    { "numeral": "V",    "chord": "B",     "quality": "major",      "notes": ["B",  "D♯", "F♯"] },
+    { "numeral": "vi",   "chord": "C♯m",   "quality": "minor",      "notes": ["C♯", "E",  "G♯"] },
+    { "numeral": "vii°", "chord": "D♯dim", "quality": "diminished", "notes": ["D♯", "F♯", "A"]  }
+  ],
+  "seventhChords": [
+    { "numeral": "Imaj7",  "chord": "Emaj7",   "quality": "major7",   "notes": ["E",  "G♯", "B",  "D♯"] },
+    { "numeral": "ii7",    "chord": "F♯m7",    "quality": "minor7",   "notes": ["F♯", "A",  "C♯", "E"]  },
+    { "numeral": "iii7",   "chord": "G♯m7",    "quality": "minor7",   "notes": ["G♯", "B",  "D♯", "F♯"] },
+    { "numeral": "IVmaj7", "chord": "Amaj7",   "quality": "major7",   "notes": ["A",  "C♯", "E",  "G♯"] },
+    { "numeral": "V7",     "chord": "B7",      "quality": "dominant7","notes": ["B",  "D♯", "F♯", "A"]  },
+    { "numeral": "vi7",    "chord": "C♯m7",    "quality": "minor7",   "notes": ["C♯", "E",  "G♯", "B"]  },
+    { "numeral": "vii∅7",  "chord": "D♯m7♭5", "quality": "halfDim7", "notes": ["D♯", "F♯", "A",  "C♯"] }
+  ],
+  "progressions": [
+    { "name": "The Cadence",         "feel": "Resolved, classical",  "numerals": ["I","IV","V","I"],       "chords": ["E","A","B","E"]           },
+    { "name": "The Anthem",          "feel": "Epic, uplifting",       "numerals": ["I","V","vi","IV"],      "chords": ["E","B","C♯m","A"]         },
+    { "name": "The Minor Dip",       "feel": "Bittersweet",           "numerals": ["I","vi","IV","V"],      "chords": ["E","C♯m","A","B"]         },
+    { "name": "The Jazz Loop",       "feel": "Smooth, resolving",     "numerals": ["ii","V","I"],           "chords": ["F♯m","B","E"]             },
+    { "name": "The Deceptive",       "feel": "Surprising, unresolved","numerals": ["V","vi"],               "chords": ["B","C♯m"]                 },
+    { "name": "Circle of Fifths",    "feel": "Flowing, inevitable",   "numerals": ["vi","ii","V","I"],      "chords": ["C♯m","F♯m","B","E"]       }
+  ],
+  "relativeMinor": {
+    "name": "C♯ minor",
+    "root": "C♯",
+    "slug": "c-sharp-minor",
+    "scale": ["C♯", "D♯", "E", "F♯", "G♯", "A", "B", "C♯"],
+    "commonProgressions": [
+      { "numerals": ["i","VI","III","VII"], "chords": ["C♯m","A","E","B"] }
+    ]
+  },
+  "parallelMinor": {
+    "name": "E natural minor",
+    "root": "E",
+    "accidentals": { "type": "sharp", "count": 1, "notes": ["F♯"] },
+    "scale": ["E", "F♯", "G", "A", "B", "C", "D", "E"],
+    "differing": [
+      { "degree": 3, "major": "G♯", "minor": "G"  },
+      { "degree": 6, "major": "C♯", "minor": "C"  },
+      { "degree": 7, "major": "D♯", "minor": "D"  }
+    ]
+  },
+  "modes": [
+    { "name": "Ionian",     "degree": 1, "root": "E",  "character": "Bright, happy — E major itself",         "distinctNote": null },
+    { "name": "Dorian",     "degree": 2, "root": "F♯", "character": "Minor with raised 6th — cool, jazzy",    "distinctNote": "D♯ (raised 6th)" },
+    { "name": "Phrygian",   "degree": 3, "root": "G♯", "character": "Dark, Spanish flavour",                  "distinctNote": "A (♭2)"  },
+    { "name": "Lydian",     "degree: 4", "root": "A",  "character": "Dreamy, floating",                        "distinctNote": "D♯ (♯4)" },
+    { "name": "Mixolydian", "degree": 5, "root": "B",  "character": "Major with flat 7th — rock, blues",       "distinctNote": "A (♭7)"  },
+    { "name": "Aeolian",    "degree": 6, "root": "C♯", "character": "Natural minor — same as C♯ minor",        "distinctNote": "A (♭6)"  },
+    { "name": "Locrian",    "degree": 7, "root": "D♯", "character": "Unstable, rarely used in practice",       "distinctNote": "E (♭5)"  }
+  ],
+  "earTraining": {
+    "scaleDegrees": [
+      { "degree": 1, "note": "E",  "feel": "Home. Stable. Resolved."                       },
+      { "degree": 2, "note": "F♯", "feel": "Stepwise. Gentle tension."                     },
+      { "degree": 3, "note": "G♯", "feel": "The major sound. Bright."                      },
+      { "degree": 4, "note": "A",  "feel": "Open. Slightly yearning."                       },
+      { "degree": 5, "note": "B",  "feel": "Strong. The anchor after tonic."               },
+      { "degree": 6, "note": "C♯", "feel": "Warm. Often emotional."                        },
+      { "degree": 7, "note": "D♯", "feel": "Leading tone. Urgently wants to resolve to E." }
+    ]
+  }
+}
