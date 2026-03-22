@@ -1,6 +1,6 @@
 // Shared rendering & data helpers for music reference pages
 
-// Read ?name= from URL, load corresponding ./keys/{slug}/key.json
+// Read ?name= from URL, load corresponding ./keys/{slug}.json
 async function loadKey() {
   const params = new URLSearchParams(window.location.search);
 
@@ -20,7 +20,7 @@ async function loadKey() {
   }
 
   // Determine the final JSON URL (always from root since key.html is in root)
-  const jsonUrl = `./keys/${slug}/key.json`;
+  const jsonUrl = `./keys/${slug}.json`;
 
   try {
     const response = await fetch(jsonUrl);
