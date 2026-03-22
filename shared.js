@@ -1,50 +1,19 @@
 // Shared rendering & data helpers for music reference pages
 
-// Read ?key= from URL, load corresponding /keys/{slug}/key.json
+// Read ?key= from URL, load corresponding ./keys/{slug}/key.json
 async function loadKey() {
   const params = new URLSearchParams(window.location.search);
-  const pathParts = window.location.pathname.split("/").filter(Boolean);
 
-  // Try to determine the slug from URL param, or from the path if we're in /keys/
-  let slug = params.get("key");
-  if (!slug && pathParts.includes("keys")) {
-    const keysIdx = pathParts.indexOf("keys");
-    if (pathParts[keysIdx + 1]) {
-      slug = pathParts[keysIdx + 1];
-    }
-  }
-  if (!slug) slug = "e-major";
+  // Determine the slug from URL param, defaulting to e-major
+  let slug = params.get("key") || "e-major";
 
   // Avoid re-loading if already present
   if (window.KEY && window.KEY.slug === slug) {
     return window.KEY;
   }
 
-  // Determine the base path to the project root
-  let base = ".";
-  const pathname = window.location.pathname;
-  const parts = pathname.split("/").filter(Boolean);
-  const keysIndex = parts.indexOf("keys");
-  const templatesIndex = parts.indexOf("templates");
-
-  if (keysIndex !== -1) {
-    // Find distance from current location to root (where 'keys' is)
-    const depthFromKeys = parts.length - 1 - keysIndex;
-    base = new Array(depthFromKeys + 1).fill("..").join("/");
-  } else if (templatesIndex !== -1) {
-    // templates/ is at root
-    const depthFromTemplates = parts.length - 1 - templatesIndex;
-    base = new Array(depthFromTemplates + 1).fill("..").join("/");
-  }
-
-  // Determine the final JSON URL
-  let jsonUrl;
-  if (pathname.includes(`/keys/${slug}/`)) {
-    // Best case: already in the correct folder
-    jsonUrl = "key.json";
-  } else {
-    jsonUrl = `${base}/keys/${slug}/key.json`.replace(/\/+/g, "/");
-  }
+  // Determine the final JSON URL (always from root since key.html is in root)
+  const jsonUrl = `./keys/${slug}/key.json`;
 
   try {
     const response = await fetch(jsonUrl);
