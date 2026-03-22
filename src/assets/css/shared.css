@@ -1,0 +1,73 @@
+@import url("./base.css");
+@import url("./components.css");
+@import url("./reference.css");
+
+/* Home Page Layout */
+.home-page header {
+  margin-top: 100px;
+}
+
+.key-grid {
+  width: 100%;
+  max-width: 960px;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .top-nav, .topic-nav, .play-all-btn {
+    display: none !important;
+  }
+
+  .section-header, .table-wrap, .staff-wrap, .tips, .tip-card, .staff-card, .key-grid {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .staff-card, .tip-card, .table-wrap {
+    border: 1px solid #ccc !important;
+    background: white !important;
+  }
+
+  .note-chip.natural, .note-chip.sharp, .sharp-badge {
+    border: 1px solid #000 !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  .note-name, .scale-degree, h1, h2, h3, h4, p, th, td, .eyebrow {
+    color: black !important;
+  }
+
+  .section-header {
+    margin-top: 20px !important;
+  }
+
+  .vexflow-container svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
