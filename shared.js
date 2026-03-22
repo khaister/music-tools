@@ -5,7 +5,14 @@ async function loadKey() {
   const params = new URLSearchParams(window.location.search);
 
   // Determine the slug from URL param, defaulting to e-major
-  let slug = params.get("key") || "e-major";
+  let slug = params.get("key");
+  if (!slug) {
+    slug = "e-major";
+    // Update the URL so it reflects the loaded key
+    const url = new URL(window.location);
+    url.searchParams.set("key", slug);
+    window.history.replaceState({}, "", url);
+  }
 
   // Avoid re-loading if already present
   if (window.KEY && window.KEY.slug === slug) {
