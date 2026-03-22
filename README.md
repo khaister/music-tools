@@ -30,6 +30,7 @@ The project uses a clean, data-driven approach to minimize code duplication and 
 ### Adding a New Key
 
 To add a new key, simply:
+
 1. Create a new JSON file in the `keys/` directory (e.g., `keys/c-major.json`) following the structure of existing key files.
 2. Add a link to the new key on the home page (`index.html`) using the format `key.html?name=c-major`.
 

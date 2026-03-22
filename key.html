@@ -1,133 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loading… — Music Key</title>
-<link rel="icon" type="image/svg+xml" href="./favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./shared.css">
-<script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js"></script>
-<script src="./shared.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading… — Music Key</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./shared.css">
+  <script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js"></script>
+  <script src="./shared.js"></script>
 </head>
+
 <body id="scale" class="reference-page">
 
-<nav class="top-nav">
-  <div class="top-nav-inner">
-    <a href="./index.html" style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
-      <span style="font-size:14px;">←</span>
-      <span>All Keys</span>
-    </a>
-  </div>
-  <nav class="topic-nav">
-    <a class="topic-pill" href="#scale">🎼 Scale</a>
-    <a class="topic-pill" href="#note-reference">📋 Note Reference</a>
-    <a class="topic-pill" href="#intervals">⇅ Intervals</a>
-    <a class="topic-pill" href="#chords">♬ Chords</a>
-    <a class="topic-pill" href="#progressions">➰ Progressions</a>
-    <a class="topic-pill" href="#relative-minor">♭ Relative Minor</a>
-    <a class="topic-pill" href="#parallel-minor">⚖ Parallel Minor</a>
-    <a class="topic-pill" href="#modes">🌈 Modes</a>
-    <a class="topic-pill" href="#ear-training">👂 Ear Training</a>
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <a href="./index.html"
+        style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
+        <span style="font-size:14px;">←</span>
+        <span>All Keys</span>
+      </a>
+    </div>
+    <nav class="topic-nav">
+      <a class="topic-pill" href="#scale">🎼 Scale</a>
+      <a class="topic-pill" href="#note-reference">📋 Note Reference</a>
+      <a class="topic-pill" href="#intervals">⇅ Intervals</a>
+      <a class="topic-pill" href="#chords">♬ Chords</a>
+      <a class="topic-pill" href="#progressions">➰ Progressions</a>
+      <a class="topic-pill" href="#relative-minor">♭ Relative Minor</a>
+      <a class="topic-pill" href="#parallel-minor">⚖ Parallel Minor</a>
+      <a class="topic-pill" href="#modes">🌈 Modes</a>
+      <a class="topic-pill" href="#ear-training">👂 Ear Training</a>
+    </nav>
   </nav>
-</nav>
 
-<header>
-  <div class="eyebrow">Key Signature Reference</div>
-  <h1>Loading…</h1>
-</header>
+  <header>
+    <div class="eyebrow">Key Signature Reference</div>
+    <h1>Loading…</h1>
+  </header>
 
-<div id="scale-root"></div>
+  <div id="scale-root"></div>
 
-<!-- Right Hand -->
-<div class="section-header">
-  <h2>Right Hand</h2>
-  <div class="line"></div>
-  <div class="hand-badge right" id="rh-badge">Treble Clef</div>
-</div>
-
-<div class="staff-wrap">
-  <div class="staff-card" id="treble-card">
-    <div class="staff-card-header">
-      <h3 id="treble-title">Treble Clef</h3>
-      <button class="play-all-btn" onclick="window.playAll('treble')">Play Scale</button>
-    </div>
-    <div id="treble-vexflow" class="vexflow-container"></div>
+  <!-- Right Hand -->
+  <div class="section-header">
+    <h2>Right Hand</h2>
+    <div class="line"></div>
+    <div class="hand-badge right" id="rh-badge">Treble Clef</div>
   </div>
-</div>
 
-<!-- Left Hand -->
-<div class="section-header">
-  <h2>Left Hand</h2>
-  <div class="line"></div>
-  <div class="hand-badge left" id="lh-badge">Bass Clef</div>
-</div>
-
-<div class="staff-wrap">
-  <div class="staff-card" id="bass-card">
-    <div class="staff-card-header">
-      <h3 id="bass-title">Bass Clef</h3>
-      <button class="play-all-btn" onclick="window.playAll('bass')">Play Scale</button>
+  <div class="staff-wrap">
+    <div class="staff-card" id="treble-card">
+      <div class="staff-card-header">
+        <h3 id="treble-title">Treble Clef</h3>
+        <button class="play-all-btn" onclick="window.playAll('treble')">Play Scale</button>
+      </div>
+      <div id="treble-vexflow" class="vexflow-container"></div>
     </div>
-    <div id="bass-vexflow" class="vexflow-container"></div>
   </div>
-</div>
 
-<!-- Note Reference -->
-<div class="section-header" id="note-reference">
-  <h2>Note Reference</h2>
-  <div class="line"></div>
-</div>
-<div id="note-reference-root"></div>
+  <!-- Left Hand -->
+  <div class="section-header">
+    <h2>Left Hand</h2>
+    <div class="line"></div>
+    <div class="hand-badge left" id="lh-badge">Bass Clef</div>
+  </div>
 
-<!-- Intervals -->
-<div class="section-header" id="intervals">
-  <h2 id="intervals-title">Intervals</h2>
-  <div class="line"></div>
-</div>
-<div id="intervals-root"></div>
+  <div class="staff-wrap">
+    <div class="staff-card" id="bass-card">
+      <div class="staff-card-header">
+        <h3 id="bass-title">Bass Clef</h3>
+        <button class="play-all-btn" onclick="window.playAll('bass')">Play Scale</button>
+      </div>
+      <div id="bass-vexflow" class="vexflow-container"></div>
+    </div>
+  </div>
 
-<!-- Chords -->
-<div class="section-header" id="chords">
-  <h2>Chords</h2>
-  <div class="line"></div>
-</div>
-<div id="chords-root"></div>
+  <!-- Note Reference -->
+  <div class="section-header" id="note-reference">
+    <h2>Note Reference</h2>
+    <div class="line"></div>
+  </div>
+  <div id="note-reference-root"></div>
 
-<!-- Progressions -->
-<div class="section-header" id="progressions">
-  <h2>Common Progressions</h2>
-  <div class="line"></div>
-</div>
-<div id="progressions-root"></div>
+  <!-- Intervals -->
+  <div class="section-header" id="intervals">
+    <h2 id="intervals-title">Intervals</h2>
+    <div class="line"></div>
+  </div>
+  <div id="intervals-root"></div>
 
-<!-- Relative Minor -->
-<div class="section-header" id="relative-minor">
-  <h2 id="relative-minor-title">Relative Minor</h2>
-  <div class="line"></div>
-</div>
-<div id="relative-minor-root"></div>
+  <!-- Chords -->
+  <div class="section-header" id="chords">
+    <h2>Chords</h2>
+    <div class="line"></div>
+  </div>
+  <div id="chords-root"></div>
 
-<!-- Parallel Minor -->
-<div class="section-header" id="parallel-minor">
-  <h2 id="parallel-minor-title">Parallel Minor</h2>
-  <div class="line"></div>
-</div>
-<div id="parallel-minor-root"></div>
+  <!-- Progressions -->
+  <div class="section-header" id="progressions">
+    <h2>Common Progressions</h2>
+    <div class="line"></div>
+  </div>
+  <div id="progressions-root"></div>
 
-<!-- Modes -->
-<div class="section-header" id="modes">
-  <h2 id="modes-title">Modes</h2>
-  <div class="line"></div>
-</div>
-<div id="modes-root"></div>
+  <!-- Relative Minor -->
+  <div class="section-header" id="relative-minor">
+    <h2 id="relative-minor-title">Relative Minor</h2>
+    <div class="line"></div>
+  </div>
+  <div id="relative-minor-root"></div>
 
-<!-- Ear Training -->
-<div class="section-header" id="ear-training">
-  <h2>Ear Training — Scale Degrees</h2>
-  <div class="line"></div>
-</div>
-<div id="ear-training-root"></div>
+  <!-- Parallel Minor -->
+  <div class="section-header" id="parallel-minor">
+    <h2 id="parallel-minor-title">Parallel Minor</h2>
+    <div class="line"></div>
+  </div>
+  <div id="parallel-minor-root"></div>
+
+  <!-- Modes -->
+  <div class="section-header" id="modes">
+    <h2 id="modes-title">Modes</h2>
+    <div class="line"></div>
+  </div>
+  <div id="modes-root"></div>
+
+  <!-- Ear Training -->
+  <div class="section-header" id="ear-training">
+    <h2>Ear Training — Scale Degrees</h2>
+    <div class="line"></div>
+  </div>
+  <div id="ear-training-root"></div>
 
 </body>
+
 </html>
