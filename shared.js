@@ -1,5 +1,12 @@
 // Shared rendering & data helpers for music reference pages
 
+// Central list of available keys
+const AVAILABLE_KEYS = [
+  { name: "C Major", slug: "c-major", meta: "0 accidentals" },
+  { name: "E Major", slug: "e-major", meta: "4 sharps" },
+  { name: "C♯ Minor", slug: "c-sharp-minor", meta: "4 sharps" }
+];
+
 // Read ?name= from URL, load corresponding ./keys/{slug}.json
 async function loadKey() {
   const params = new URLSearchParams(window.location.search);
@@ -554,16 +561,64 @@ async function initPage() {
   };
 }
 
+// Navigation Menu
+function initNavigationMenu() {
+  const overlay = createEl("div", "drawer-overlay");
+  const drawer = createEl("div", "side-drawer");
+  const toggle = createEl("button", "menu-toggle");
+  for (let i = 0; i < 3; i++) toggle.appendChild(document.createElement("span"));
+
+  const header = createEl("div", "drawer-header", "Quick Navigate");
+  const nav = createEl("nav", "drawer-nav");
+
+  // Home link
+  const homeLink = createEl("a", "drawer-link", "Home");
+  homeLink.href = "index.html";
+  nav.appendChild(homeLink);
+
+  const divider = document.createElement("div");
+  divider.style.height = "1px"; divider.style.background = "var(--border)"; divider.style.margin = "8px 0";
+  nav.appendChild(divider);
+
+  // Key links
+  AVAILABLE_KEYS.forEach(k => {
+    const link = createEl("a", "drawer-link", k.name);
+    link.href = `key.html?name=${k.slug}`;
+    const meta = createEl("span", null, k.meta);
+    link.appendChild(meta);
+    nav.appendChild(link);
+  });
+
+  drawer.appendChild(header);
+  drawer.appendChild(nav);
+
+  document.body.appendChild(overlay);
+  document.body.appendChild(drawer);
+  document.body.appendChild(toggle);
+
+  const toggleMenu = () => {
+    const isActive = drawer.classList.toggle("active");
+    overlay.classList.toggle("active", isActive);
+    toggle.classList.toggle("active", isActive);
+    document.body.style.overflow = isActive ? "hidden" : "";
+  };
+
+  toggle.addEventListener("click", toggleMenu);
+  overlay.addEventListener("click", toggleMenu);
+}
+
 // Auto-init when the DOM is ready
 function autoInit() {
+  initNavigationMenu();
+
   // Only init on pages that actually have a scale-root (i.e. not the home page)
   if (document.getElementById("scale-root")) {
     initPage();
   }
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", autoInit);
-} else {
+if (document.readyState === "complete") {
   autoInit();
+} else {
+  window.addEventListener("load", autoInit);
 }
