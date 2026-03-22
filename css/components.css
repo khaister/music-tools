@@ -126,3 +126,31 @@
   box-shadow: 0 4px 12px rgba(129, 140, 248, 0.25);
 }
 .play-all-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(129, 140, 248, 0.4); }
+
+/* Footer */
+.site-footer {
+  width: 100%;
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+}
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--text-dim);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+}
+.github-link {
+  color: var(--text-dim);
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+.github-link:hover {
+  color: var(--cream);
+}
+
