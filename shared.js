@@ -136,8 +136,8 @@ function renderNoteTable(container, keyData) {
 
     const typeTd = createEl("td");
     const typeSpan = createEl("span", null, step.accidental ? "♯ Sharp" : "Natural");
-    if (step.accidental) typeSpan.style.color = "var(--gold-light)";
-    else typeSpan.style.color = "rgba(245,240,232,0.5)";
+    if (step.accidental) typeSpan.style.color = "var(--primary)";
+    else typeSpan.style.color = "var(--text-dim)";
     typeSpan.style.fontSize = "11px";
     typeTd.appendChild(typeSpan);
 
