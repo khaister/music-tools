@@ -99,6 +99,13 @@ const playAll = async (type) => {
     }, index * 400);
   });
 };
+
+const scrollTo = (selector) => {
+  const element = document.querySelector(selector);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 </script>
 
 <template>
@@ -111,15 +118,48 @@ const playAll = async (type) => {
         </router-link>
       </div>
       <nav class="topic-nav">
-        <a class="topic-pill" href="#scale">🎼 Scale</a>
-        <a class="topic-pill" href="#note-reference">📋 Note Reference</a>
-        <a class="topic-pill" href="#intervals">⇅ Intervals</a>
-        <a class="topic-pill" href="#chords">♬ Chords</a>
-        <a class="topic-pill" href="#progressions">➰ Progressions</a>
-        <a class="topic-pill" href="#relative-minor">♭ Relative Minor</a>
-        <a class="topic-pill" href="#parallel-minor">⚖ Parallel Minor</a>
-        <a class="topic-pill" href="#modes">🌈 Modes</a>
-        <a class="topic-pill" href="#ear-training">👂 Ear Training</a>
+        <a class="topic-pill" href="#" @click.prevent="scrollTo('#scale')"
+          >🎼 Scale</a
+        >
+        <a
+          class="topic-pill"
+          href="#"
+          @click.prevent="scrollTo('#note-reference')"
+          >📋 Note Reference</a
+        >
+        <a class="topic-pill" href="#" @click.prevent="scrollTo('#intervals')"
+          >⇅ Intervals</a
+        >
+        <a class="topic-pill" href="#" @click.prevent="scrollTo('#chords')"
+          >♬ Chords</a
+        >
+        <a
+          class="topic-pill"
+          href="#"
+          @click.prevent="scrollTo('#progressions')"
+          >➰ Progressions</a
+        >
+        <a
+          class="topic-pill"
+          href="#"
+          @click.prevent="scrollTo('#relative-minor')"
+          >♭ Relative Minor</a
+        >
+        <a
+          class="topic-pill"
+          href="#"
+          @click.prevent="scrollTo('#parallel-minor')"
+          >⚖ Parallel Minor</a
+        >
+        <a class="topic-pill" href="#" @click.prevent="scrollTo('#modes')"
+          >🌈 Modes</a
+        >
+        <a
+          class="topic-pill"
+          href="#"
+          @click.prevent="scrollTo('#ear-training')"
+          >👂 Ear Training</a
+        >
       </nav>
     </nav>
 
