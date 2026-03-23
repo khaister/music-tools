@@ -1,17 +1,6 @@
 /* Specialized Reference Styles: Notation, Scale Chips, Layout */
 
 .reference-page {
-  background-image:
-    radial-gradient(
-      circle at 0% 0%,
-      rgba(129, 140, 248, 0.08) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 100% 100%,
-      rgba(56, 189, 248, 0.05) 0%,
-      transparent 50%
-    );
 }
 
 .scale-strip {
