@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.{vue,js,css}\" \"*.{html,json,js}\" \"public/**/*.json\""
+    "format": "prettier --write \"src/**/*.{vue,js,css}\" \"*.{html,json,js}\" \"public/**/*.json\"",
+    "format:check": "prettier --check \"src/**/*.{vue,js,css}\" \"*.{html,json,js}\" \"public/**/*.json\""
   },
   "dependencies": {
     "tone": "^15.0.4",
