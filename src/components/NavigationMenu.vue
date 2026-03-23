@@ -1,23 +1,23 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const AVAILABLE_KEYS = [
   { name: 'C Major', slug: 'c-major', meta: '0 accidentals' },
   { name: 'E Major', slug: 'e-major', meta: '4 sharps' },
   { name: 'C♯ Minor', slug: 'c-sharp-minor', meta: '4 sharps' }
-]
+];
 
-const isActive = ref(false)
+const isActive = ref(false);
 
 const toggleMenu = () => {
-  isActive.value = !isActive.value
-  document.body.style.overflow = isActive.value ? 'hidden' : ''
-}
+  isActive.value = !isActive.value;
+  document.body.style.overflow = isActive.value ? 'hidden' : '';
+};
 
 const closeMenu = () => {
-  isActive.value = false
-  document.body.style.overflow = ''
-}
+  isActive.value = false;
+  document.body.style.overflow = '';
+};
 </script>
 
 <template>

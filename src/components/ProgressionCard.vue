@@ -4,7 +4,7 @@ defineProps({
   feel: String,
   numerals: Array,
   chords: Array
-})
+});
 </script>
 
 <template>

@@ -3,7 +3,7 @@ defineProps({
   name: String,
   slug: String,
   meta: String
-})
+});
 </script>
 
 <template>

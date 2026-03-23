@@ -1,104 +1,104 @@
 <script setup>
-import { ref, onMounted, computed, watch, onUnmounted } from 'vue'
-import StaffStave from '../components/StaffStave.vue'
-import InfoTable from '../components/InfoTable.vue'
-import ProgressionCard from '../components/ProgressionCard.vue'
+import { ref, onMounted, computed, watch, onUnmounted } from 'vue';
+import StaffStave from '../components/StaffStave.vue';
+import InfoTable from '../components/InfoTable.vue';
+import ProgressionCard from '../components/ProgressionCard.vue';
 
 const props = defineProps({
   name: String
-})
+});
 
-const keyData = ref(null)
-const trebleStave = ref(null)
-const bassStave = ref(null)
-let synth = null
+const keyData = ref(null);
+const trebleStave = ref(null);
+const bassStave = ref(null);
+let synth = null;
 
 onUnmounted(() => {
   if (synth) {
-    synth.dispose()
-    synth = null
+    synth.dispose();
+    synth = null;
   }
-})
+});
 
 const fetchKeyData = async () => {
   try {
     const response = await fetch(
       `${import.meta.env.BASE_URL}keys/${props.name}.json`
-    )
-    keyData.value = await response.json()
-    document.title = `${keyData.value.name} — KeyAtlas`
+    );
+    keyData.value = await response.json();
+    document.title = `${keyData.value.name} — KeyAtlas`;
   } catch (e) {
-    console.error('Failed to load key data', e)
+    console.error('Failed to load key data', e);
   }
-}
+};
 
-onMounted(fetchKeyData)
-watch(() => props.name, fetchKeyData)
+onMounted(fetchKeyData);
+watch(() => props.name, fetchKeyData);
 
 const vfKey = computed(() => {
-  if (!keyData.value) return 'C'
-  let k = keyData.value.root.replace('♯', '#').replace('♭', 'b')
-  return keyData.value.type === 'minor' ? `${k}m` : k
-})
+  if (!keyData.value) return 'C';
+  let k = keyData.value.root.replace('♯', '#').replace('♭', 'b');
+  return keyData.value.type === 'minor' ? `${k}m` : k;
+});
 
 const rhRange = computed(
   () =>
     `${keyData.value?.staffOctaves?.treble?.start || ''} – ${keyData.value?.staffOctaves?.treble?.end || ''}`
-)
+);
 const lhRange = computed(
   () =>
     `${keyData.value?.staffOctaves?.bass?.start || ''} – ${keyData.value?.staffOctaves?.bass?.end || ''}`
-)
+);
 
 const initSynth = (Tone) => {
-  if (synth) return synth
-  synth = new Tone.Synth().toDestination()
-  return synth
-}
+  if (synth) return synth;
+  synth = new Tone.Synth().toDestination();
+  return synth;
+};
 
 const playNote = async ({ note, element }) => {
-  const Tone = await import('tone')
-  await Tone.start()
-  const s = initSynth(Tone)
-  s.triggerAttackRelease(note, '8n')
+  const Tone = await import('tone');
+  await Tone.start();
+  const s = initSynth(Tone);
+  s.triggerAttackRelease(note, '8n');
   if (element) {
-    const heads = element.querySelectorAll('.vf-notehead')
+    const heads = element.querySelectorAll('.vf-notehead');
     heads.forEach((h) => {
-      h.classList.add('playing')
-      setTimeout(() => h.classList.remove('playing'), 300)
-    })
+      h.classList.add('playing');
+      setTimeout(() => h.classList.remove('playing'), 300);
+    });
   }
-}
+};
 
 const playAll = async (type) => {
-  const Tone = await import('tone')
-  await Tone.start()
-  const s = initSynth(Tone)
+  const Tone = await import('tone');
+  await Tone.start();
+  const s = initSynth(Tone);
   const notesData =
     type === 'treble'
       ? keyData.value.vexflow.trebleNotesData
-      : keyData.value.vexflow.bassNotesData
-  const stave = type === 'treble' ? trebleStave.value : bassStave.value
-  const staveNotes = stave.getElements()
+      : keyData.value.vexflow.bassNotesData;
+  const stave = type === 'treble' ? trebleStave.value : bassStave.value;
+  const staveNotes = stave.getElements();
 
-  const now = Tone.now()
+  const now = Tone.now();
   notesData.forEach((data, index) => {
-    const toneNote = data.key.replace('/', '').toUpperCase()
-    const time = now + index * 0.4
-    s.triggerAttackRelease(toneNote, '8n', time)
+    const toneNote = data.key.replace('/', '').toUpperCase();
+    const time = now + index * 0.4;
+    s.triggerAttackRelease(toneNote, '8n', time);
 
     setTimeout(() => {
-      const element = staveNotes[index]?.getSVGElement()
+      const element = staveNotes[index]?.getSVGElement();
       if (element) {
-        const heads = element.querySelectorAll('.vf-notehead')
+        const heads = element.querySelectorAll('.vf-notehead');
         heads.forEach((h) => {
-          h.classList.add('playing')
-          setTimeout(() => h.classList.remove('playing'), 300)
-        })
+          h.classList.add('playing');
+          setTimeout(() => h.classList.remove('playing'), 300);
+        });
       }
-    }, index * 400)
-  })
-}
+    }, index * 400);
+  });
+};
 </script>
 
 <template>

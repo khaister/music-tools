@@ -1,6 +1,6 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import KeyDetailView from '../views/KeyDetailView.vue'
+import { createRouter, createWebHashHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import KeyDetailView from '../views/KeyDetailView.vue';
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -19,10 +19,10 @@ const router = createRouter({
   ],
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
-      return { el: to.hash, top: 110 }
+      return { el: to.hash, top: 110 };
     }
-    return { top: 0 }
+    return { top: 0 };
   }
-})
+});
 
-export default router
+export default router;

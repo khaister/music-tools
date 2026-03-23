@@ -2,7 +2,7 @@
 defineProps({
   headers: Array,
   rows: Array
-})
+});
 </script>
 
 <template>

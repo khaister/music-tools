@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { Factory } from 'vexflow'
+import { ref, onMounted, watch } from 'vue';
+import { Factory } from 'vexflow';
 
 const props = defineProps({
   id: String,
@@ -10,105 +10,105 @@ const props = defineProps({
   title: String,
   range: String,
   badgeClass: String
-})
+});
 
-const emit = defineEmits(['play-note', 'play-all'])
+const emit = defineEmits(['play-note', 'play-all']);
 
-const container = ref(null)
-const staveElements = ref([])
+const container = ref(null);
+const staveElements = ref([]);
 
 const render = () => {
-  if (!container.value || !props.notesData.length) return
+  if (!container.value || !props.notesData.length) return;
 
-  container.value.innerHTML = ''
+  container.value.innerHTML = '';
   const width = Math.max(
     container.value.clientWidth || 1000,
     props.notesData.length * 60
-  )
-  const height = 240
+  );
+  const height = 240;
 
   const factory = new Factory({
     renderer: { elementId: container.value, width: width, height: height }
-  })
+  });
 
-  const context = factory.getContext()
+  const context = factory.getContext();
   const stave = factory
     .Stave({ x: 10, y: 70, width: width - 20 })
     .addClef(props.clef)
-    .addKeySignature(props.keySignature)
+    .addKeySignature(props.keySignature);
 
-  stave.setContext(context).draw()
+  stave.setContext(context).draw();
 
   const staveNotes = props.notesData.map((data) => {
     const note = factory.StaveNote({
       keys: [data.key],
       duration: 'q',
       clef: props.clef
-    })
+    });
 
     if (data.key.includes('#')) {
-      note.addModifier(factory.Accidental({ type: '#' }), 0)
+      note.addModifier(factory.Accidental({ type: '#' }), 0);
     } else if (data.key.includes('b')) {
-      note.addModifier(factory.Accidental({ type: 'b' }), 0)
+      note.addModifier(factory.Accidental({ type: 'b' }), 0);
     }
 
-    const fingerPos = props.clef === 'treble' ? 1 : -1 // ABOVE=1, BELOW=-1 in some VF versions, or use constants
+    const fingerPos = props.clef === 'treble' ? 1 : -1; // ABOVE=1, BELOW=-1 in some VF versions, or use constants
     note.addModifier(
       factory.Fingering({
         number: data.fingering,
         position: props.clef === 'treble' ? 3 : 4
       }),
       0
-    ) // Position values vary by version
+    ); // Position values vary by version
 
-    return note
-  })
+    return note;
+  });
 
   const voice = factory
     .Voice({ time: { num_beats: props.notesData.length, beat_value: 4 } })
-    .addTickables(staveNotes)
+    .addTickables(staveNotes);
 
   const textNotes = props.notesData.map((data) => {
     return factory
       .TextNote({ text: data.label, duration: 'q' })
       .setLine(12)
-      .setJustification(2) // CENTER
-  })
+      .setJustification(2); // CENTER
+  });
 
   const textVoice = factory
     .Voice({ time: { num_beats: props.notesData.length, beat_value: 4 } })
-    .addTickables(textNotes)
+    .addTickables(textNotes);
 
   factory
     .Formatter()
     .joinVoices([voice, textVoice])
-    .format([voice, textVoice], width - 100)
+    .format([voice, textVoice], width - 100);
 
-  voice.draw(context, stave)
-  textVoice.draw(context, stave)
+  voice.draw(context, stave);
+  textVoice.draw(context, stave);
 
-  staveElements.value = staveNotes
+  staveElements.value = staveNotes;
 
   staveNotes.forEach((staveNote, idx) => {
-    const element = staveNote.getSVGElement()
+    const element = staveNote.getSVGElement();
     if (element) {
-      element.style.cursor = 'pointer'
+      element.style.cursor = 'pointer';
       element.addEventListener('click', () => {
         emit('play-note', {
           note: props.notesData[idx].key.replace('/', '').toUpperCase(),
           element
-        })
-      })
+        });
+      });
     }
-  })
-}
+  });
+};
 
-onMounted(render)
-watch(() => props.notesData, render)
+onMounted(render);
+watch(() => props.notesData, render);
 
 defineExpose({
   getElements: () => staveElements.value
-})
+});
 </script>
 
 <template>
