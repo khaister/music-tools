@@ -27,6 +27,9 @@
 
 .staff-wrap { width: 100%; max-width: 1120px; margin-bottom: 48px; }
 .staff-card { background: var(--paper); border-radius: 20px; padding: 32px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); }
+@media (max-width: 600px) {
+  .staff-card { padding: 20px 16px; }
+}
 .staff-card h3 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 20px; opacity: 0.4; letter-spacing: 0.02em; }
 
 .staff-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
